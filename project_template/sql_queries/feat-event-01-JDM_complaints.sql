@@ -1,39 +1,10 @@
-/*                 UNCLASSIFIED//FOR OFFICIAL USE ONLY                       */
+/*                 placeholder                      */
 
 /* ============================================================================
-============================= (U) FEATURE =====================================
+=============================  FEATURE =====================================
 
-(U//FOUO) Title: JDM Complaints
-(U) Version: 1
-(U//FOUO) Author: Erikson Arcaira
-(U) Description: 
-	(U//FOUO) This table creates the complaint population based on the Javelin 
-		Disciplinary tables. It identifies the subject of a complaint (2004 to 
-		current) a unique complaint identifier, the dates a complaint was 
-		received, an initial investigation opened, and when it was closed. It 
-		also flags if a complaint was elevated to a case, and includes case 
-		information as well. 
+Title: JDM Complaints
 
-(U) Data Source
----------------
-(U//FOUO) Original data source(s): Javelin_Disciplinary (JDM) Case and Subject 
-	tables, Spear_User (for entity resolution) 
-(U//FOUO) Data source info: <no webpage>
-(U//FOUO) Data classification: SECRET//NOFORN
-(U) Data as of: 2022-05-19
-
-(U) Feature info
-----------------
-(U//FOUO) Join key: SSN
-(U//FOUO) Fields:
-
-	TODO
-	
-(U) Usage:
-	(U//FOUO) A precursor to the NON_DEROG feature table.
-
-(U) Limitations:
-	(U) TODO
 
 ============================================================================ */
 ALTER SESSION SET current_schema = DATA_SCIENCE;

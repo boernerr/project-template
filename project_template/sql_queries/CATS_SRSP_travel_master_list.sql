@@ -1,34 +1,10 @@
-/*                 UNCLASSIFIED//FOR OFFICIAL USE ONLY                       */
+/*                   placeholder                    */
 
 /* ============================================================================
-============================= (U) FEATURE =====================================
+=============================  FEATURE =====================================
 
-(U//FOUO) Title: Self-reported Travel
-(U) Version: 1
-(U//FOUO) Author: Robert Boerner
-(U) Description: 
-	(U) TBD
+Title: Self-reported Travel
 
-(U) Data Source
----------------
-(U//FOUO) Original data source(s): CATS (SF-86)
-(U//FOUO) Data source info:
-	- http://cwv-sjav-toolsrv01:8090/pages/viewpage.action?pageId=21463890
-(U//FOUO) Data classification: SECRET//NOFORN
-(U) Data as of: 2021-02-22
-
-(U) Feature info
-----------------
-(U//FOUO) Join key: UEID
-(U//FOUO) Fields:
-	
-	TBD
-
-(U) Usage:
-	(U) TBD
-
-(U) Limitations:
-	(U//FOUO) As this comes from SF-86, it is self-reported.
 
 ============================================================================ */
 ALTER SESSION SET current_schema = DATA_SCIENCE;
@@ -242,8 +218,15 @@ with uniq_ssn as (--32205 distinct ssn
 			,eod.min_eod
 		from (
 			select 
-			ssn_master, cats_max_ch_dt, min_srsp_dt, destination_country as country,  srs_from_month as        from_month, srs_from_yr as           from_year, cats_flag as    cats_and_srsp_datasrc
-			from compare  where min_SRSP_dt is not null
+			ssn_master,
+			cats_max_ch_dt,
+			min_srsp_dt,
+			destination_country as country,
+			srs_from_month as        from_month,
+			srs_from_yr as           from_year,
+			cats_flag as    cats_and_srsp_datasrc
+			from compare
+			where min_SRSP_dt is not null
 			UNION
 			select 
 			ssn_master, cats_max_ch_dt, min_srsp_dt,                        country,CAST (from_month as INT)as from_month,CAST (from_year as INT) as from_year,  srsp_flag as  cats_and_srsp_datasrc

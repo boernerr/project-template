@@ -1,37 +1,10 @@
-/*                 UNCLASSIFIED//FOR OFFICIAL USE ONLY                       */
+/*                 placeholder                      */
 
 /* ============================================================================
-============================= (U) FEATURE =====================================
+=============================  FEATURE =====================================
 
-(U//FOUO) Title: JDM Cases
-(U) Version: 1
-(U//FOUO) Author: Erikson Arcaira
-(U) Description: 
-	(U//FOUO) This table creates the CASE population based on the Javelin 
-		Disciplinary tables. It identifies the subject of a case (2004 to 
-		current) a unique caseid, the dates a case was opened, if and when it 
-		was transferred to OPR, and when it was adjudicated. 
+Title: JDM Cases
 
-(U) Data Source
----------------
-(U//FOUO) Original data source(s): Javelin_Disciplinary (JDM) Case and Subject 
-	tables, Spear_User (for entity resolution) 
-(U//FOUO) Data source info: 
-(U//FOUO) Data classification: SECRET//NOFORN
-(U) Data as of: 2022-05-19
-
-(U) Feature info
-----------------
-(U//FOUO) Join key: SSN
-(U//FOUO) Fields:
-
-	TODO
-	
-(U) Usage:
-	(U//FOUO) A precursor to the NON_DEROG feature table.
-
-(U) Limitations:
-	(U) TODO
 
 ============================================================================ */
 ALTER SESSION SET current_schema = DATA_SCIENCE;

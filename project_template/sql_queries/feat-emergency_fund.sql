@@ -1,17 +1,10 @@
-/*                 UNCLASSIFIED//FOR OFFICIAL USE ONLY                       */
+/*             placeholder  */
 
 /* ============================================================================
 ============================= (U) FEATURE =====================================
 
-(U//FOUO) Title: Emergency Fund
-(U) Version: 1
-(U//FOUO) Author: Harry Shapiro / Daniel Torkelson
-(U) Description: 
-	(U//FOUO) An estimation of an FDP filer's emergency fund based on their 
-	reported bank balances and monthly payments. In other words, how long 
-	could they survive if their income were suddenly cut off? 
-
-	(U) Monthly expenses are currently estimated as:
+Emergency Fund
+Monthly expenses are currently estimated as:
 		1.5 x mortgage
 		1.15 x rent
 		1.5 x car lease and auto loan
@@ -19,56 +12,11 @@
 		liabilities (including credit cards)
 		$900 additional for living expenses
 	
-	(U) It is reasonable that these calculations should be evaluated and updated
+	It is reasonable that these calculations should be evaluated and updated
 	as times change. Multipliers simulate the operating and maintenance costs
 	of the underlying assets, and are based on internet research of the U.S.
 	population as of 2019.
 
-	(U) A more robust solution is to pull these kinds of statistics annually
-	from the internet and update a locality-based model.
-		
-
-(U) Data Source
----------------
-(U//FOUO) Original data source(s): Financial Disclosure Program (FDP)
-(U//FOUO) Data source info: http://cwv-sjav-toolsrv01:8090/display/DATA/FDP
-(U//FOUO) Data classification: SECRET//NOFORN
-(U) Data as of: 2022-02-23
-
-(U) Feature info
-----------------
-(U//FOUO) Join key: UEID, YEAR
-(U//FOUO) Fields:
-
-	BANK_BALANCE: integer / ratio
-		Sum of all reported bank accounts as of 31 Dec.
-
-	ESTIMATED_MONTHLY_EXPENSES: integer / ratio
-		Sum of all reported monthly payments.
-
-	LIQUIDITY_RATIO: float / ratio
-		BANK_BALANCE divided by ESTIMATED_MONTHLY_EXPENSES
-
-(U) Usage:
-	(U//FOUO) Can be combined with other financial health measures or leveraged
-	in further calculations.
-
-	(U//FOUO) Can be used to roughly validate an employee's self-reporting
-	integrity, if another source-of-truth for loans is available (e.g. Lexis
-	Nexis Credit Reports).
-
-(U) Limitations:
-	(U//FOUO) As this is based on self-reporting, it should not be considered 
-	the source-of-truth for an individual's financial status.
-
-	(U//FOUO) Since FDP asks for status as of Dec 31 of the previous year, 
-	these measures may be the employee's approximations for the year. The 
-	staleness of this reporting can be, at a minimum, 3 months (due to FDP forms 
-	not being requested until at least March of the following year), and at 
-	maximum, the difference between today's date and the year of reporting.
-
-	(U//FOUO) As not all employees and contractors are FDP filers, this can
-	only be used for that subset of the population.
 
 ============================================================================ */
 ALTER SESSION SET current_schema = DATA_SCIENCE;
