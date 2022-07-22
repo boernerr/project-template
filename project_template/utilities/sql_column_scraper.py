@@ -4,14 +4,13 @@ import os
 import pandas as pd
 import re
 import subprocess
+import importlib
 
 from collections import defaultdict
 from os import path
 
+from project_template import SQL_QUERIES_PATH, DOCS_PATH, SCRIPT_PATH
 
-SCRIPT_PATH = path.normpath(path.join(path.dirname(path.realpath(__file__))))
-DOCS_PATH = path.join(SCRIPT_PATH, '..', 'docs')
-SQL_QUERIES_PATH = path.join(SCRIPT_PATH, '..', 'sql_queries')
 
 def get_lines_from_file(input_file: str) -> list:
     with open(input_file, 'r') as f:
@@ -23,15 +22,16 @@ def regex_find_table_name(sql_file):
     return re.search('create table(.+?)as', sql_file, re.IGNORECASE)# .group(1)
 
 def main():
-    for sql_file in os.listdir(SQL_QUERIES_PATH)[:10]:
+    for sql_file in os.listdir(SQL_QUERIES_PATH)[:1]:
         file_read = get_lines_from_file(path.join(SQL_QUERIES_PATH, sql_file))
-        created_table_name = None
-        for line in file_read:
-            if regex_find_table_name(line):
-                created_table_name = regex_find_table_name(line).group(1)
-        print(f'[{sql_file}] creates: [{created_table_name.strip()}]')
+        print(file_read)
+        # created_table_name = None
+        # for line in file_read:
+        #     if regex_find_table_name(line):
+        #         # group(1) returns just the match:
+        #         created_table_name = regex_find_table_name(line).group(1)
+        # print(f'SQL file: [{sql_file}] creates: [DATA_SCIENCE.{created_table_name.strip()}]')
 
-        # print(f'Sql file: {sql_file} contains {len(file_read)} rows') #
 
 if __name__ == '__main__':
     main()
