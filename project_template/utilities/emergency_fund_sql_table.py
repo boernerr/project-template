@@ -1,26 +1,4 @@
-/*             placeholder  */
-
-/* ============================================================================
-============================= (U) FEATURE =====================================
-
-Emergency Fund
-Monthly expenses are currently estimated as:
-		1.5 x mortgage
-		1.15 x rent
-		1.5 x car lease and auto loan
-		other loans
-		liabilities (including credit cards)
-		$900 additional for living expenses
-	
-	It is reasonable that these calculations should be evaluated and updated
-	as times change. Multipliers simulate the operating and maintenance costs
-	of the underlying assets, and are based on internet research of the U.S.
-	population as of 2019.
-
-
-============================================================================ */
-ALTER SESSION SET current_schema = DATA_SCIENCE;
-
+sql_em_fund = '''
 CREATE TABLE EMERGENCY_FUND AS
 select 
 	phx.ueid
@@ -101,4 +79,22 @@ LEFT JOIN (
 	WHERE PrimID <> -1
 ) efund on efund.primary_id = id.primary_id
 order by phx.ueid, id.year
-;
+;'''
+
+jdm_complaints = '''CREATE TABLE jdm_complaints AS
+	SELECT distinct 
+		d.employeemetadataid, d.cmsfullname, d.cmsssan, e.ssn, d.cmslastname, d.cmsfirstname, d.cmsmiddlename, 
+		to_date(to_char(cast(d.cmsdob as date), 'DD-MON-YY')) as cmsdob,
+		to_date(to_char(cast(c.datereceivedinipu as date), 'DD-MON-YY')) as datereceived, 
+		to_date(to_char(cast(c.dateopened as date), 'DD-MON-YY')) as dateopened,
+		to_date(to_char(cast(c.dateclosed as date), 'DD-MON-YY')) as dateclosed,
+		c.DOJOIGNUMBER, c.ID AS COMPLAINT_ID, C.TIER, F.CASE_ID,
+		X.CASEFILENUMBER, X.CRIMINAL, X.CMSCOMPLEXITY, G.VALUE
+	FROM javelin_disciplinary.SUBJECT D
+	JOIN javelin_disciplinary.COMPLAINT_SUBJECT B ON D.ID=B.SUBJECT_ID
+	JOIN javelin_disciplinary.COMPLAINT C ON B.COMPLAINT_ID=C.ID
+	LEFT JOIN spear_user.person_search E ON D.EMPLOYEEMETADATAID = E.ENTITY_ID
+	LEFT JOIN javelin_disciplinary.COMPLAINT_CASE F ON C.ID=F.COMPLAINT_ID
+	LEFT JOIN javelin_disciplinary."CASE" X ON F.CASE_ID=X.ID
+	LEFT JOIN javelin_disciplinary.CASETYPELKP G ON X.CASETYPE=G.ID
+;'''

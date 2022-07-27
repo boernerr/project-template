@@ -11,13 +11,25 @@ ALTER SESSION SET current_schema = DATA_SCIENCE;
 
 CREATE TABLE jdm_complaints AS
 	SELECT distinct 
-		d.employeemetadataid, d.cmsfullname, d.cmsssan, e.ssn, d.cmslastname, d.cmsfirstname, d.cmsmiddlename, 
+		d.employeemetadataid,
+		d.cmsfullname,
+		d.cmsssan,
+		e.ssn,
+		d.cmslastname,
+		d.cmsfirstname,
+		d.cmsmiddlename,
 		to_date(to_char(cast(d.cmsdob as date), 'DD-MON-YY')) as cmsdob,
 		to_date(to_char(cast(c.datereceivedinipu as date), 'DD-MON-YY')) as datereceived, 
 		to_date(to_char(cast(c.dateopened as date), 'DD-MON-YY')) as dateopened,
 		to_date(to_char(cast(c.dateclosed as date), 'DD-MON-YY')) as dateclosed,
-		c.DOJOIGNUMBER, c.ID AS COMPLAINT_ID, C.TIER, F.CASE_ID,
-		X.CASEFILENUMBER, X.CRIMINAL, X.CMSCOMPLEXITY, G.VALUE
+		c.DOJOIGNUMBER,
+		c.ID AS COMPLAINT_ID,
+		C.TIER,
+		F.CASE_ID,
+		X.CASEFILENUMBER,
+		X.CRIMINAL,
+		X.CMSCOMPLEXITY,
+		G.VALUE
 	FROM javelin_disciplinary.SUBJECT D
 	JOIN javelin_disciplinary.COMPLAINT_SUBJECT B ON D.ID=B.SUBJECT_ID
 	JOIN javelin_disciplinary.COMPLAINT C ON B.COMPLAINT_ID=C.ID

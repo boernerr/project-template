@@ -23,8 +23,12 @@ def regex_find_table_name(sql_file):
 
 def main():
     for sql_file in os.listdir(SQL_QUERIES_PATH)[:1]:
+        # file_to_str = ''
         file_read = get_lines_from_file(path.join(SQL_QUERIES_PATH, sql_file))
-        print(file_read)
+        file_to_str = ''.join(i for i in file_read)
+        print(f'len of sql file: {len(file_to_str)}')
+        print(file_to_str)
+        # print(file_read)
         # created_table_name = None
         # for line in file_read:
         #     if regex_find_table_name(line):
